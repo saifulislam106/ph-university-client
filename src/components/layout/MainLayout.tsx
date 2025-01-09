@@ -10,21 +10,22 @@ const items: MenuProps["items"] = [
     label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
   },
   {
-    key: "2",
-    label: "Profile",
-  },
-  {
-    key: "User menegment",
-    label: "User menegment",
+    key: "User management",
+    label: "User management",
     children: [
       {
-        key: "11",
-        label: "Admin menegement",
+        key: "create admin",
+        label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
       },
       {
-        key: "21",
-        label: "Student menegement",
+        key: "create faculty",
+        label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
       },
+      {
+        key: "create student",
+        label: <NavLink to="/admin/create-student">Create Student</NavLink>,
+      },
+      
     ],
   },
 ];
