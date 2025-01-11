@@ -3,7 +3,7 @@
 const AdminDashboard = () => {
     return (
         <div>
-            Dashboard
+            admin Dashboard
         </div>
     );
 };
