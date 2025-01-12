@@ -15,7 +15,7 @@ const userRole ={
  
 
 const Sidebar = () => {
-const role = "student" // Change this to test the sidebar items for different roles;
+const role = "admin" // Change this to test the sidebar items for different roles;
 
 let sidebarItems 
 
