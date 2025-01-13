@@ -48,3 +48,26 @@ export default tseslint.config({
   },
 })
 ```
+
+# Description step by step
+
+ vite project initial setup by using react & typeScripts
+
+## used npm pakges
+- Design, route & form npm
+1. antd
+2. react-router-dom(menual/old version)
+3. reacr-hook-form
+
+- State management npm
+1. redux toolkit 
+2. react redux
+3. redux persist(persistant data in redux store after reload )
+
+- Authentication npm (jwt.io => whice cheqe a token )
+1. jwt-decode (token theke impormation ber kore)
+
+
+
+
+
