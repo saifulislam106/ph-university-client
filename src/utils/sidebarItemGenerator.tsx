@@ -23,5 +23,6 @@ export const sidebarItemGenerator = (items: TUserRoute[], role) => {
 
     return acc;
   }, []);
+
   return sidebarItems;
 };

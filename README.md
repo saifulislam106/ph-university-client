@@ -67,6 +67,9 @@ export default tseslint.config({
 - Authentication npm (jwt.io => whice cheqe a token )
 1. jwt-decode (token theke impormation ber kore)
 
+-Authorization part(implement authorize admin, fulculty and student)
+
+
 
 
 

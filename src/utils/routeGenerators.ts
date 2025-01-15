@@ -19,5 +19,6 @@ export const routeGenerator = (items:TUserRoute[]) => {
     }
     return acc;
   }, []);
+  
   return routes;
 };
