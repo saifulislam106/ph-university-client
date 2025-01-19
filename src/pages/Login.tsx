@@ -10,6 +10,8 @@ import { toast } from "sonner";
 import PHForm from "../components/form/PHForm";
 import PHInput from "../components/form/PHInput";
 
+
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -21,7 +23,12 @@ const Login = () => {
   //   },
   // });
 
-  const [login, {data}] = useLoginMutation();
+  const defaultValues = {
+    id: "A-0001",
+    password: "admin123",
+  };
+
+  const [login, { data }] = useLoginMutation();
   console.log(data);
 
   const onSubmit = async (data: FieldValues) => {
@@ -42,12 +49,12 @@ const Login = () => {
     }
   };
   return (
-    <Row justify="center" align="middle" style={{ height: "100vh" }}> 
-    <PHForm onSubmit={onSubmit}>
-        <PHInput type="text" name="id" label="Id:" />  
+    <Row justify="center" align="middle" style={{ height: "100vh" }}>
+      <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+        <PHInput type="text" name="id" label="Id:" />
         <PHInput type="text" name="password" label="Password" />
-      <Button htmlType="submit">Submit</Button>
-    </PHForm>
+        <Button htmlType="submit">Submit</Button>
+      </PHForm>
     </Row>
   );
 };
