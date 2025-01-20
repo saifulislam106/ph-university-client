@@ -14,7 +14,7 @@ const CreateAcademicSemester = () => {
         <Col span={6}>
         <PHForm onSubmit={onSubmit}>
             <PHInput type="text" name="name" label="Name:" />
-            <PHSelect />
+            <PHSelect label={name}/>
             <div>
             <Button htmlType="submit">Submit</Button>
             </div>

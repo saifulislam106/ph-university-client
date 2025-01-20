@@ -1,22 +1,26 @@
 import { Form, Select, } from "antd";
 
 
-const PHSelect = () => {
+interface PHSelectProps {
+  label: string;
+}
+
+const PHSelect = ({ label }: PHSelectProps) => {
     const handleChange = (value: string) => {
         console.log(`selected ${value}`);
       };
       
     return (
-       <Form.Item>
+       <Form.Item label= {label}>
         <Select
           defaultValue="lucy"
           style={{ width: "100%"}}
           onChange={handleChange}
           options={[
-            { value: 'jack', label: 'Jack' },
-            { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' },
-            { value: 'disabled', label: 'Disabled', disabled: true },
+            { value: '01', label: 'Summer' },
+            { value: '02', label: 'Autumn' },
+            { value: '03', label: 'Fall' },
+            
           ]}
         />
         </Form.Item>
