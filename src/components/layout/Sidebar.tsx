@@ -8,37 +8,39 @@ import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 const { Sider } = Layout;
 
-const userRole ={
+const userRole = {
   admin: "admin",
   faculty: "faculty",
   student: "student",
-}
-
- 
+};
 
 const Sidebar = () => {
-  const user = useAppSelector(selectCurrentUser)
-// const role = "admin" // Change this to test the sidebar items for different roles;
+  const user = useAppSelector(selectCurrentUser);
+  // const role = "admin" // Change this to test the sidebar items for different roles;
 
-let sidebarItems 
+  let sidebarItems;
 
-switch (user?.role) {
-  case userRole.admin:
-    sidebarItems = sidebarItemGenerator(adminPaths, userRole.admin);
-    break;
-  case userRole.faculty:
-    sidebarItems = sidebarItemGenerator(facultyPaths, userRole.faculty);
-    break;
-  case userRole.student:
-    sidebarItems = sidebarItemGenerator(studentPaths, userRole.student);
-    break;
+  switch (user?.role) {
+    case userRole.admin:
+      sidebarItems = sidebarItemGenerator(adminPaths, userRole.admin);
+      break;
+    case userRole.faculty:
+      sidebarItems = sidebarItemGenerator(facultyPaths, userRole.faculty);
+      break;
+    case userRole.student:
+      sidebarItems = sidebarItemGenerator(studentPaths, userRole.student);
+      break;
 
-  default:
-    break;
-}
+    default:
+      break;
+  }
 
   return (
-    <Sider breakpoint="lg" collapsedWidth="0">
+    <Sider
+      breakpoint="lg"
+      collapsedWidth="0"
+      style={{ height: "100vh", position: "sticky", top: 0, left: 0 }}
+    >
       <div
         style={{
           height: "36px",

@@ -39,7 +39,7 @@ function MainLayout() {
     dispatch(logout());
   };
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100%" }}>
       <Sidebar />
       <Layout>
         <Header style={{ padding: 0 }}> <Button onClick={handleLogout}>Logout</Button> </Header>
