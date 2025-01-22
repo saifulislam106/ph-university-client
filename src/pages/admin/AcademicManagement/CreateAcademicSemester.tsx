@@ -39,7 +39,6 @@ const CreateAcademicSemester = () => {
     }
    
   };
- 
   
   return (
     <Flex justify="center" align="middle">
