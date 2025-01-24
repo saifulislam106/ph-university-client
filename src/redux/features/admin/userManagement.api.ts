@@ -4,33 +4,33 @@ import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
     endpoints :(builder)=>({
-            getAllSemester:builder.query({
-                query:(args)=>{
-                    const params = new URLSearchParams()
-                    if(args){
-                        args.forEach((item: TQueryParams) => {
-                            params.append(item.name , item.value as string)
-                        });
-                    }
+            // getAllSemester:builder.query({
+            //     query:(args)=>{
+            //         const params = new URLSearchParams()
+            //         if(args){
+            //             args.forEach((item: TQueryParams) => {
+            //                 params.append(item.name , item.value as string)
+            //             });
+            //         }
     
                     
-                    return{
-                    url:"/academic-semesters",
-                    method:"GET",
-                    params:params
-                }},
-                transformResponse:(response :TResponseRedux<TData[]>)=>{
-                   console.log(response);
-                    return {
-                        data: response.data,
-                        meta :response.meta
-                    };
-                }
+            //         return{
+            //         url:"/academic-semesters",
+            //         method:"GET",
+            //         params:params
+            //     }},
+            //     transformResponse:(response :TResponseRedux<TData[]>)=>{
+            //        console.log(response);
+            //         return {
+            //             data: response.data,
+            //             meta :response.meta
+            //         };
+            //     }
             
-            }),
-            addAcademivSemester:builder.mutation({
+            // }),
+            addStudent:builder.mutation({
                 query:(data)=>({
-                    url:"/academic-semesters/create-academic-semester",
+                    url:"users/create-student",
                     method:"POST",
                     body:data
                 })
@@ -38,4 +38,4 @@ const userManagementApi = baseApi.injectEndpoints({
         })
 })
 
-export const {}= userManagementApi
+export const {useAddStudentMutation}= userManagementApi
