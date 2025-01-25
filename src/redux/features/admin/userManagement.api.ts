@@ -1,5 +1,4 @@
-import { TQueryParams, TResponseRedux } from "../../../types";
-import { TData } from "../../../types/academicManagement.type";
+
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
