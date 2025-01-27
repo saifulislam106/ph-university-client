@@ -5,14 +5,15 @@ import PHSelect from "../../../components/form/PHSelect";
 import { monthOptions, nameOptions, yearOptions } from "../../../constants/semester";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
-import { useAddAcademivSemesterMutation } from "../../../redux/features/admin/academicManagementApi";
+
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global.type";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagementApi";
 
 
 
 const CreateAcademicSemester = () => {
-  const [addAcademicSemester] =useAddAcademivSemesterMutation(undefined)
+  const [addAcademicSemester] =useAddAcademicSemesterMutation(undefined)
 
   const onSubmit: SubmitHandler<FieldValues> = async(data) => {
     const toastId = toast.success("loading ...")
@@ -27,7 +28,7 @@ const CreateAcademicSemester = () => {
     
     try{
       
-      const res = await addAcademicSemester(semesterDate) as TResponse
+      const res = await addAcademicSemester(semesterDate) as TResponse;
       if(res?.error){
         toast.error(res.error?.data?.message ,{id: toastId})
       }else{

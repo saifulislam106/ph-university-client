@@ -5,7 +5,7 @@ import { Button, Col, Divider, Row } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, gendersOptions } from "../../../constants/semester";
 import PHDatePicker from "../../../components/form/PHDatePicker";
-import { useGetAllSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
+import { useGetAcademicDepartmentsQuery, useGetAllSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
 
 const studentData = {
   password: "student123",
@@ -83,9 +83,13 @@ const studentDeafultData = {
 };
 
 const CreateStudent = () => {
+
   const { data: sData, isLoading: sIsLoading } =
     useGetAllSemesterQuery(undefined);
-  console.log(sData);
+  // console.log(sData);
+  const {data: dData , isLoading: dIsLoading} =useGetAcademicDepartmentsQuery(undefined)
+  console.log(dData);
+  
   const semesterOptions = sData?.data?.map((item) => ({
     value: item._id,
     label: `${item.name} ${item.year}`,
@@ -233,6 +237,7 @@ const CreateStudent = () => {
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
               <PHSelect
                 options={semesterOptions}
+                disabled={sIsLoading}
                 name="admissionSemester"
                 label="Admission Semester"
               />
@@ -240,6 +245,7 @@ const CreateStudent = () => {
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
               <PHSelect
                 options={semesterOptions}
+                disabled={sIsLoading}
                 name="academicDepartment"
                 label="Academic Department"
               />
