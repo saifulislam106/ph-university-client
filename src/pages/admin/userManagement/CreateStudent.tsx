@@ -6,6 +6,7 @@ import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, gendersOptions } from "../../../constants/semester";
 import PHDatePicker from "../../../components/form/PHDatePicker";
 import { useGetAcademicDepartmentsQuery, useGetAllSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
+import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
 
 const studentData = {
   password: "student123",
@@ -56,7 +57,7 @@ const studentDeafultData = {
   gender: "male",
   bloogGroup: "A+",
 
-  email: "student2@gmail.com",
+  email: "student123@gmail.com",
   contactNo: "1235678",
   emergencyContactNo: "987-654-3210",
   presentAddress: "123 Main St, Cityville",
@@ -84,6 +85,9 @@ const studentDeafultData = {
 
 const CreateStudent = () => {
 
+  const [addStudent, { data, error }] = useAddStudentMutation();
+  console.log({data, error});
+
   const { data: sData, isLoading: sIsLoading } =
     useGetAllSemesterQuery(undefined);
   // console.log(sData);
@@ -98,11 +102,19 @@ const CreateStudent = () => {
   const onSublit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
 
+    const studentData= {
+      password: "student123",
+      student: data
+    }
+
     const formData = new FormData();
     //! This is for devlopment
-    formData.append("data", JSON.stringify(data));
+    formData.append("data", JSON.stringify(studentData));
+
+    addStudent(formData)
     console.log(Object.fromEntries(formData));
   };
+
   return (
     <Row>
       <Col span={24}>
