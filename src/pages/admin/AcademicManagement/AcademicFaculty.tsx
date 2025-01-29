@@ -3,12 +3,14 @@ import { useGetAcademicFacultiesQuery } from "../../../redux/features/admin/acad
 import { Table, TableColumnsType, TableProps } from "antd";
 import { TQueryParams } from "../../../types";
 
-export type TTableData = {
+type TTableData = {
   name: string;
 };
 
 const AcademicFaculty = () => {
+
   const [params, setParams] = useState<TQueryParams[] | undefined>(undefined);
+  
   const { data: facultyData, isFetching } =
     useGetAcademicFacultiesQuery(params);
 
@@ -39,9 +41,9 @@ const AcademicFaculty = () => {
     },
   ];
   const onChange: TableProps<TTableData>["onChange"] = (
-    pagination,
+    _pagination,
     filters,
-    sorter,
+    _sorter,
     extra
   ) => {
     if (extra.action === "filter") {

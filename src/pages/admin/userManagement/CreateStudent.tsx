@@ -5,7 +5,10 @@ import { Button, Col, Divider, Row } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, gendersOptions } from "../../../constants/semester";
 import PHDatePicker from "../../../components/form/PHDatePicker";
-import { useGetAcademicDepartmentsQuery, useGetAllSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
+import {
+  useGetAcademicDepartmentsQuery,
+  useGetAllSemesterQuery,
+} from "../../../redux/features/admin/academicManagementApi";
 import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
 
 const studentData = {
@@ -79,21 +82,22 @@ const studentDeafultData = {
     address: "789 Pine St, Villageton",
   },
 
-  admissionSemester: "65b0104110b74fcbd7a25d92",
-  academicDepartment: "65b00fb010b74fcbd7a25d8e",
+  // admissionSemester: "65b0104110b74fcbd7a25d92",
+  // academicDepartment: "65b00fb010b74fcbd7a25d8e",
 };
 
 const CreateStudent = () => {
-
   const [addStudent, { data, error }] = useAddStudentMutation();
-  console.log({data, error});
+  console.log({ data, error });
 
   const { data: sData, isLoading: sIsLoading } =
     useGetAllSemesterQuery(undefined);
   // console.log(sData);
-  const {data: dData , isLoading: dIsLoading} =useGetAcademicDepartmentsQuery(undefined)
+
+  const { data: dData, isLoading: dIsLoading } =
+    useGetAcademicDepartmentsQuery(undefined);
   console.log(dData);
-  
+
   const semesterOptions = sData?.data?.map((item) => ({
     value: item._id,
     label: `${item.name} ${item.year}`,
@@ -104,14 +108,14 @@ const CreateStudent = () => {
 
     const studentData = {
       password: "student123",
-      student: data
-    }
+      student: data,
+    };
 
     const formData = new FormData();
     //! This is for devlopment
     formData.append("data", JSON.stringify(studentData));
 
-    addStudent(formData)
+    addStudent(formData);
     console.log(Object.fromEntries(formData));
   };
 

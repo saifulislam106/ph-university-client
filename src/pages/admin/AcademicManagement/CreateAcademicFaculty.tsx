@@ -14,13 +14,12 @@ const CreateAcademicFaculty = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.success("loading ...");
 
-
     const facultyData = {
-      name:data.name,
+      name: data.name,
     };
 
     try {
-      const res = (await addAcademicFaculty(facultyData)) ;
+      const res = await addAcademicFaculty(facultyData);
       if (res?.error) {
         toast.error(res.error?.data?.message, { id: toastId });
       } else {
@@ -34,16 +33,19 @@ const CreateAcademicFaculty = () => {
 
   return (
     <Flex justify="center" align="middle">
-    <Col span={6}>
-      <PHForm onSubmit={onSubmit} resolver={zodResolver(academicFacultySchema)} >
-        <PHSelect label="Name:" name="name" options={facultyNameOptions} />
-       
-        <div>
-          <Button htmlType="submit">Submit</Button>
-        </div>
-      </PHForm>
-    </Col>
-  </Flex>
+      <Col span={6}>
+        <PHForm
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicFacultySchema)}
+        >
+          <PHSelect label="Name:" name="name" options={facultyNameOptions} />
+
+          <div>
+            <Button htmlType="submit">Submit</Button>
+          </div>
+        </PHForm>
+      </Col>
+    </Flex>
   );
 };
 
