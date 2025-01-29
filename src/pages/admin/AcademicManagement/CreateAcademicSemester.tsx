@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import PHForm from "../../../components/form/PHForm";
 import { Button, Col, Flex } from "antd";
@@ -18,6 +19,7 @@ const CreateAcademicSemester = () => {
   const onSubmit: SubmitHandler<FieldValues> = async(data) => {
     const toastId = toast.success("loading ...")
     const name = nameOptions[Number(data?.name)-1]?.label
+
     const semesterDate = {
         name,
         code: data.name,
@@ -28,7 +30,7 @@ const CreateAcademicSemester = () => {
     
     try{
       
-      const res = await addAcademicSemester(semesterDate) as TResponse;
+      const res = await addAcademicSemester(semesterDate) as TResponse<any>;
       if(res?.error){
         toast.error(res.error?.data?.message ,{id: toastId})
       }else{

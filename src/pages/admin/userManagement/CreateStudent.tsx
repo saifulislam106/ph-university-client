@@ -79,8 +79,8 @@ const studentDeafultData = {
     address: "789 Pine St, Villageton",
   },
 
-  // admissionSemester: "65b0104110b74fcbd7a25d92",
-  // academicDepartment: "65b00fb010b74fcbd7a25d8e",
+  admissionSemester: "65b0104110b74fcbd7a25d92",
+  academicDepartment: "65b00fb010b74fcbd7a25d8e",
 };
 
 const CreateStudent = () => {
@@ -102,7 +102,7 @@ const CreateStudent = () => {
   const onSublit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
 
-    const studentData= {
+    const studentData = {
       password: "student123",
       student: data
     }

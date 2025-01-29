@@ -87,6 +87,7 @@ const AcademicSemester = () => {
       filters?.year?.forEach((item) =>
         queryParams.push ({name:"year" ,value:item}),   
      ) 
+     console.log(filters);
      setParams(queryParams)
     }
   };
