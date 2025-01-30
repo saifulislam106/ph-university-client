@@ -1,16 +1,21 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
-import { useAddAcademicDepartmentMutation } from "../../../redux/features/admin/academicManagementApi";
+import { useAddAcademicDepartmentMutation, useGetAcademicFacultiesQuery } from "../../../redux/features/admin/academicManagementApi";
 import { Button, Col, Flex } from "antd";
 import PHForm from "../../../components/form/PHForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PHSelect from "../../../components/form/PHSelect";
 import { academicDepartmentSchema } from "../../../schemas/academicManagement.schema";
 import { departmentNameOptions } from "../../../constants/a.department";
+import { useState } from "react";
 
 const CreateAcademicDepartment = () => {
+  const {data}= useGetAcademicFacultiesQuery(undefined);
   const [addAcademicDepartment] = useAddAcademicDepartmentMutation(undefined);
 
+  const [departmentField, setDepartmentField] = useState("");
+  const [departmentFieldOptions, setDepartmentFieldOptions] = useState<
+    { label: string; value: string }[]
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.success("loading ...");
 
@@ -50,3 +55,7 @@ const CreateAcademicDepartment = () => {
 };
 
 export default CreateAcademicDepartment;
+
+
+
+

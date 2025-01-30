@@ -8,9 +8,8 @@ type TTableData = {
 };
 
 const AcademicFaculty = () => {
-
   const [params, setParams] = useState<TQueryParams[] | undefined>(undefined);
-  
+
   const { data: facultyData, isFetching } =
     useGetAcademicFacultiesQuery(params);
 
